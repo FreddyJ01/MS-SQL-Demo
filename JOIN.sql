@@ -62,20 +62,122 @@ ON P.BusinessEntityID = PP.BusinessEntityID
 INNER JOIN Person.EmailAddress PE
 ON P.BusinessEntityID = PE.BusinessEntityID;
 
----------------------
--- LEFT OUTER JOIN --
----------------------
+----------------------------------------
+-- LEFT OUTER JOIN & RIGHT OUTER JOIN --
+----------------------------------------
+-- Converting an inner join to OUTER JOIN
+SELECT P.Name, P.ProductNumber, PS.Name AS 'Product SubCategory ID'
+FROM Production.Product P
+INNER JOIN Production.ProductSubcategory PS
+ON PS.ProductCategoryID = P.ProductSubcategoryID;
 
+-- These 2 Queries return the exact same set:
 
+-- This says we want everything from Production.Product AND anything from Production.ProductSubCategory IF it meets our ON condition.
+SELECT P.Name, P.ProductNumber, PS.Name AS 'Product SubCategory ID'
+FROM Production.Product P -- Left Table
+LEFT OUTER JOIN Production.ProductSubcategory PS -- Right Table
+ON PS.ProductCategoryID = P.ProductSubcategoryID;
 
+-- This says we want everything from Production.Product AND anything from Production.ProductSubCategory IF it meets our ON condition.
+SELECT P.Name, P.ProductNumber, PS.Name AS 'Product SubCategory ID'
+FROM Production.ProductSubcategory PS -- Left Table
+RIGHT OUTER JOIN Production.Product P -- Right Table
+ON PS.ProductCategoryID = P.ProductSubcategoryID;
 
+SELECT P.FirstName, P.LastName, SOH.SalesOrderNumber, SOH.TotalDue AS 'Sales Amount', ST.Name AS 'Territory Name'
+FROM Sales.SalesOrderHeader SOH
+LEFT OUTER JOIN Sales.SalesPerson SP
+ON SP.BusinessEntityID = SOH.SalesPersonID
+LEFT OUTER JOIN HumanResources.Employee E
+ON SP.BusinessEntityID = E.BusinessEntityID
+LEFT OUTER JOIN Person.Person P
+ON P.BusinessEntityID = E.BusinessEntityID
+LEFT OUTER JOIN Sales.SalesTerritory ST
+ON SOH.TerritoryID = ST.TerritoryID;
 
+SELECT P.FirstName, P.LastName, SOH.SalesOrderNumber, SOH.TotalDue AS 'Sales Amount', ST.Name AS 'Territory Name'
+FROM Sales.SalesOrderHeader SOH
+LEFT OUTER JOIN Sales.SalesPerson SP
+ON SP.BusinessEntityID = SOH.SalesPersonID
+LEFT OUTER JOIN HumanResources.Employee E
+ON SP.BusinessEntityID = E.BusinessEntityID
+LEFT OUTER JOIN Person.Person P
+ON P.BusinessEntityID = E.BusinessEntityID
+LEFT OUTER JOIN Sales.SalesTerritory ST
+ON SOH.TerritoryID = ST.TerritoryID
+WHERE ST.Name = 'Northwest';
 
+SELECT P.FirstName, P.LastName, SOH.SalesOrderNumber, SOH.TotalDue AS 'Sales Amount', ST.Name AS 'Territory Name'
+FROM Sales.SalesOrderHeader SOH
+LEFT OUTER JOIN Sales.SalesPerson SP
+ON SP.BusinessEntityID = SOH.SalesPersonID
+LEFT OUTER JOIN HumanResources.Employee E
+ON SP.BusinessEntityID = E.BusinessEntityID
+LEFT OUTER JOIN Person.Person P
+ON P.BusinessEntityID = E.BusinessEntityID
+LEFT OUTER JOIN Sales.SalesTerritory ST
+ON SOH.TerritoryID = ST.TerritoryID
+WHERE ST.Name = 'Northwest'
+ORDER BY 4 DESC;
+--------------------------------------
+-- LEFT & RIGHT OUTER JOIN PRACTICE --
+--------------------------------------
+/* 
+#1
+- Return the BusinessEntityID and SalesYTD columns from the Sales.SalesPerson table.
+- Join this table to the Sales.SalesTerritory table in such a way that every salesperson is returned, regardless of whether or not they are assigned to a territory.
+- Also return the Name column from Sales.SalesTerritory.
+- Give this column the alias "Territory Name".
+*/
 
-----------------------
--- RIGHT OUTER JOIN --
-----------------------
+SELECT SP.BusinessEntityID, SP.SalesYTD, ST.Name AS 'Territory Name'
+FROM Sales.SalesPerson SP -- Left Table
+LEFT OUTER JOIN Sales.SalesTerritory ST -- Right Table
+ON SP.TerritoryID = ST.TerritoryID;
+
+/*
+#2
+Using the previous example as your foundation, join to the Person.Person table to return the salesperson’s first name and last name.
+Now, only include rows where the territory’s name is either "Northeast" or "Central".
+*/
+
+SELECT P.FirstName, P.LastName, SP.BusinessEntityID, SP.SalesYTD, ST.Name AS 'Territory Name'
+FROM Sales.SalesPerson SP
+LEFT OUTER JOIN Sales.SalesTerritory ST
+ON SP.TerritoryID = ST.TerritoryID
+INNER JOIN Person.Person P
+ON SP.BusinessEntityID = P.BusinessEntityID
+WHERE ST.Name IN ('Northeast', 'Central');
+
+/*
+#3
+Return the Name and ListPrice columns from Production.Product.
+For each product, regardless of whether or not it has an assigned ProductSubcategoryID, return:
+The Name column from Production.ProductSubcategory
+The Name column from Production.ProductCategory
+Use the following column aliases:
+Production.Product.Name → ProductName
+Production.ProductSubcategory.Name → ProductSubcategoryName
+Production.ProductCategory.Name → ProductCategoryName
+Order the results by:
+ProductCategoryName (descending)
+ProductSubcategoryName (ascending)
+*/
+
+SELECT P.Name AS 'ProductName', P.ListPrice, PSC.Name AS 'ProductSubCategoryName', PC.Name AS 'ProductCategoryName'
+FROM Production.Product P -- Left Table
+LEFT OUTER JOIN Production.ProductCategory PC
+ON P.ProductSubcategoryID = PC.ProductCategoryID
+LEFT OUTER JOIN Production.ProductSubcategory PSC
+ON P.ProductSubcategoryID = PSC.ProductSubcategoryID
+ORDER BY PC.Name DESC, PSC.Name;
 
 ---------------------
 -- FULL OUTER JOIN --
 ---------------------
+-- I believe this says, we want all the data from Production.Product AND Production.ProductSubCategory WHERE P.ProductID is NOT Found in Production.ProductSubCategory. Essentially we are finding the data that is not related between the Tables.
+SELECT P.Name AS 'Product Name', PS.Name AS 'Product SubCategory Name'
+FROM Production.Product P
+FULL OUTER JOIN Production.ProductSubcategory PS
+ON P.ProductID = PS.ProductSubcategoryID;
