@@ -1,0 +1,15 @@
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/bin/Debug/net8.0/DELETEME
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/bin/Debug/net8.0/DELETEME.deps.json
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/bin/Debug/net8.0/DELETEME.runtimeconfig.json
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/bin/Debug/net8.0/DELETEME.dll
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/bin/Debug/net8.0/DELETEME.pdb
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/obj/Debug/net8.0/DELETEME.GeneratedMSBuildEditorConfig.editorconfig
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/obj/Debug/net8.0/DELETEME.AssemblyInfoInputs.cache
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/obj/Debug/net8.0/DELETEME.AssemblyInfo.cs
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/obj/Debug/net8.0/DELETEME.csproj.CoreCompileInputs.cache
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/obj/Debug/net8.0/DELETEME.sourcelink.json
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/obj/Debug/net8.0/DELETEME.dll
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/obj/Debug/net8.0/refint/DELETEME.dll
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/obj/Debug/net8.0/DELETEME.pdb
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/obj/Debug/net8.0/DELETEME.genruntimeconfig.cache
+/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/obj/Debug/net8.0/ref/DELETEME.dll
