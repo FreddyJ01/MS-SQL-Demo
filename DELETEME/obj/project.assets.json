@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/DELETEME.csproj",
+      "projectUniqueName": "/Users/freddy/Documents/Projects/Local_Repo/MS-SQL-Demo/DELETEME/DELETEME.csproj",
       "projectName": "DELETEME",
-      "projectPath": "/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/DELETEME.csproj",
+      "projectPath": "/Users/freddy/Documents/Projects/Local_Repo/MS-SQL-Demo/DELETEME/DELETEME.csproj",
       "packagesPath": "/Users/freddy/.nuget/packages/",
-      "outputPath": "/Users/freddy/Documents/Projects/Local_Repo/MsSqlServerDemo/DELETEME/obj/",
+      "outputPath": "/Users/freddy/Documents/Projects/Local_Repo/MS-SQL-Demo/DELETEME/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/freddy/.nuget/NuGet/NuGet.Config"
